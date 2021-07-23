@@ -46,7 +46,7 @@ Download the latest "stable" bin file under **Firmware with ESP-IDF v4.x**
 As of 7/22/21, the latest was: 
 https://micropython.org/resources/firmware/esp32-20210623-v1.16.bin
 
-## Flash the firmware to the board
+## Flash the MicroPython firmware to the board
 
 Connect a USB cable from your computer to the microcontroller board. The board should power up.
 
@@ -78,13 +78,13 @@ Click the `OK` button. The display will not show anything until we write code to
 
 ### Download the .zip file from the Mythic Summer Camp repository on GitHub.
 
-Go to https://github.com/mythic-ai/summercamp2021/archive/refs/heads/main.zip . Your browser may automatically put that in your computer's Downloads directory.
+Go to https://github.com/mythic-ai/summercamp2021/archive/refs/heads/main.zip . Your browser may automatically put **summercamp2021-main.zip** in your computer's Downloads directory.
 
 Extract the Python code (.py files) from the zip file to the mu_code directory.
 
 Open the zip file and copy all the .py files from the zip file's **embedded/modules** and **embedded/projects** directories to **C:\Users\\**\<YourUserName>**\mu_code** (for Windows users). The mu_code directory is the same place shown in the **Files on your computer:** side of the lower pane that opens when you click the `Files` button on Mu.
 
-### Copy the files from your computer to the module
+## Copy the files from your computer to the module
 
 Establish an initial connection to the module by clicking the `REPL` button in the Mu application.
 
@@ -96,3 +96,8 @@ Click the `Files` button in Mu.
 
 Individually drag each of the files from the **Files on your computer:** side to the **Files on your device:** side. Wait for the file to show up on the destination side before copying the next.
 
+## Run the code
+
+In Mu, the `Load` button, select the **oledtest.py** file from the mu_code directory, and click the `Open` button.
+
+Now, press the `Run` button. Sometimes it takes a few tries to get it to start.
