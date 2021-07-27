@@ -2,6 +2,8 @@
 
 [toc]
 
+> **Attention:** *This is not the IDE we're currently recommending for MicroPython on our summer camp breadboard. Please look at the Thonny documentation.*
+>
 > **Note:** These instructions might require help from a seasoned computer user or adult.
 
 ## Get the Mu Python editor program for your home computer
@@ -31,7 +33,7 @@ Click `Download` under the Mac OSX Installer heading
 
 Click `Instructions` under the Python Package (Linux or Native Python) heading.
 
-### First Launch
+## First Launch
 
 The first time you run this software it will continue with a secondary install to set up your system. While this happens Mu plays a cute animation of a python waiting patiently. 
 
@@ -84,7 +86,7 @@ Extract the Python code (.py files) from the zip file to the mu_code directory.
 
 Open the zip file and copy all the .py files from the zip file's **embedded/modules** and **embedded/projects** directories to **C:\Users\\**\<YourUserName>**\mu_code** (for Windows users). The mu_code directory is the same place shown in the **Files on your computer:** side of the lower pane that opens when you click the `Files` button on Mu.
 
-## Copy the files from your computer to the module
+### Copy the files from your computer to the module
 
 Establish an initial connection to the module by clicking the `REPL` button in the Mu application.
 
