@@ -2,15 +2,15 @@
 
 ## Parts
 
-1x [Heltec Automation ESP32 module](https://www.amazon.com/Development-0-96inch-Display-Arduino-Compatible/dp/B07428W8H3)
-1x [VL53L0X Time-of-Flight Laser Ranging Sensor](https://www.amazon.com/gp/product/B08JYHJTQY)
-1x [MPU6050 3 Axis Accelerometer and Gyroscope Module](https://www.amazon.com/gp/product/B00LP25V1A)
-1x [Passive Buzzer Module](https://www.amazon.com/gp/product/B07MPYWVGD)
-1x [Hall Effect Magnetic Sensor Module](https://www.amazon.com/gp/product/B07X97JXHT)
-1x [Multicolored Wire Kit](https://www.amazon.com/gp/product/B01EV70C78)
-1x [Solderless Breadboard](https://www.amazon.com/gp/product/B07NVWR495)
-1x [Ceramid Magnets](https://www.amazon.com/gp/product/B07S75MD7X) (any magnet will do)
-1x [Roll Copper Foil Tape](https://www.amazon.com/gp/product/B0741ZRP4W)
+* 1x [Heltec Automation ESP32 module](https://www.amazon.com/Development-0-96inch-Display-Arduino-Compatible/dp/B07428W8H3)
+* 1x [VL53L0X Time-of-Flight Laser Ranging Sensor](https://www.amazon.com/gp/product/B08JYHJTQY)
+* 1x [MPU6050 3 Axis Accelerometer and Gyroscope Module](https://www.amazon.com/gp/product/B00LP25V1A)
+* 1x [Passive Buzzer Module](https://www.amazon.com/gp/product/B07MPYWVGD)
+* 1x [Hall Effect Magnetic Sensor Module](https://www.amazon.com/gp/product/B07X97JXHT)
+* 1x [Multicolored Wire Kit](https://www.amazon.com/gp/product/B01EV70C78)
+* 1x [Solderless Breadboard](https://www.amazon.com/gp/product/B07NVWR495)
+* 1x [Ceramid Magnets](https://www.amazon.com/gp/product/B07S75MD7X) (any magnet will do)
+* 1x [Roll Copper Foil Tape](https://www.amazon.com/gp/product/B0741ZRP4W)
 
 ## Your first project
 
