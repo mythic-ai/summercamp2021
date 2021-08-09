@@ -1,4 +1,4 @@
-# Drink can alert
+# Laser trip wire
 # - Mythic Summer Camp 2021
 #
 # Alarm that goes off if someone picks up a metal can that's touching a wire or crosses the laser trip wire.
@@ -10,12 +10,10 @@
 # - Pin 19 - GPIO in  -> Hall effect (magnet) sensor, inverted
 # - Pin 22 - GPIO out -> Beeper, inverted
 # - Pin 25 - GPIO out -> White LED (onboard module)
-# - Pin 27 - Touch in -> Wire touching can
 
 from machine import I2C, Pin, TouchPad
 import ssd1306
 import vl53l0x
-import imu
 import time
 
 rst = Pin(16, Pin.OUT)
@@ -31,8 +29,6 @@ sda = Pin(4, Pin.OUT, Pin.PULL_UP)
 i2c = I2C(scl=scl, sda=sda, freq=450000)
 oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3c)
 laser = vl53l0x.VL53L0X(i2c)
-tp = TouchPad(Pin(27, Pin.IN, None))
-imu = imu.MPU6050(i2c)
 
 def mythic_logo(oled):
     logo=[
@@ -46,6 +42,8 @@ def mythic_logo(oled):
         oled.pixel(x, y, 1)
 
 # *** Interesting code starts here! ***
+
+tripped = False  # we use this to track the "tripped" state. start out in not-tripped state
 
 # Do this forever
 while True:
@@ -61,19 +59,30 @@ while True:
     # Print the sensor readings
     oled.text('Magnet = ' + str(magnet.value()), 10, 20)
     oled.text('Laser = ' + str(laser.read()) + 'mm', 10, 30)
-    oled.text('Touch = ' + str(tp.read()), 10, 40)
-    oled.text('Tilt = ' + str(imu.accel.inclination) + 'deg', 10, 50)
+
     mythic_logo(oled)
     
     # Commit the screen changes
     oled.show()
-
-    # turn on the LED and beep if something is in front of the laser or if the can is removed
-    # from the touch sensor. But don't beep if the board is tilted or the key (magnet) is detected.
-    if (laser.read() < 1000 or tp.read() > 450) and imu.accel.inclination < 45.0 and magnet.value() > 0:
+    
+    # Check for our "key" - if the magnet value is 0, then the magnet is near the sensor
+    # and we want to un-trip the alarm.
+    if magnet.value() == 0:
+        tripped = False
+    else:
+        # ...but if the magnet isn't by the sensor, we should check the laser trip wire.
+        # The laser distance sensor reads out in millimeters when you run laser.read().
+        if laser.read() < 1000:
+            # and if it's less than our maximum distance we set the tripped state.
+            tripped = True
+        
+    
+    if tripped:
+        # If we're in the tripped state, turn on the LED and buzzer
         led.value(1)
         beeper.value(0)
     else:
+        # And if not, turn them both off
         led.value(0)
         beeper.value(1)
         
