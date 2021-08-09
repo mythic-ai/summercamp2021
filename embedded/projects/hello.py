@@ -4,7 +4,6 @@
 # Connections:
 # - Pin 4  - I2C SDA  -> OLED (onboard module), laser distance sensor, and IMU
 # - Pin 15 - I2C SCL  -> OLED (onboard module), laser distance sensor, and IMU
-# - Pin 19 - GPIO in  -> Hall effect (magnet) sensor, inverted
 # - Pin 25 - GPIO out -> White LED (onboard module)
 
 from machine import I2C, Pin, TouchPad

@@ -53,10 +53,14 @@ while True:
     # Commit the screen changes
     oled.show()
     
+    # Check if the touch pin sensor is less than 200
+    # (the lower the number, the more likely something is touching the wire)
     if tp.read() < 200:
+        # If it's being touched, turn on the white LED and beep the buzzer
         led.value(1)
         beeper.value(0)
     else:
+        # If it's not being touched, turn the LED and buzzer off
         led.value(0)
         beeper.value(1)
     
