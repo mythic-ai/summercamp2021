@@ -31,3 +31,7 @@
 7. Connect to the ESP32 board by clicking the red STOP button. The green play button should light up at the top of the window.
 
 8. Click the play button to upload and run your program.
+
+Congrats, you ran your first embedded program!
+
+[Now try the next project to learn how to wire up the breadboard](https://github.com/mythic-ai/summercamp2021/blob/main/embedded/docs/project2_touch.md)
