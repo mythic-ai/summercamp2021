@@ -58,7 +58,8 @@ Leave the Port or WebREPL selector at < Try to detect port automatically >.
 Click `OK`, but we'll be back here in a bit to install the firmware.
 
 ## Get the MicroPython firmware file for the ESP32 microprocessor on the module
-
+(skip for boards given out at the Mythic Summer Camp - this is already loaded)
+  
 Use your browser to navigate to: 
 https://micropython.org/download/esp32/
 
@@ -67,7 +68,8 @@ As of 7/22/21, the latest was:
 https://micropython.org/resources/firmware/esp32-20210623-v1.16.bin
 
 ## Flash the MicroPython firmware to the board
-
+(skip for boards given out at the Mythic Summer Camp - this is already loaded)
+  
 > **Note:**  You'll only need to do this once on your microcontroller board. Well, unless something goes really wrong and you need to start over from scratch.
 
 Connect a USB cable from your computer to the microcontroller board. The board should power up.
@@ -122,14 +124,15 @@ It's fine to extract into your computer's Downloads directory, but you might wan
 Click the `Extract` button and the directory shown above will be created with all the files you need in it.
 
 ### Copy the files from your computer to the module
-
+(skip for boards given out at the Mythic Summer Camp - this is already loaded)
+  
 We need to copy these files from the summer camp directory to the module, we'll use Thonny to do that.
 
 ```
-C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\mpu9250.py
+C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\imu.py
 C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\ssd1306.py
 C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\vl53l0x.py
-C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\projects\oledtest.py
+C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\vector3d.py
 ```
 
 All of these will be copied to the top directory on the module.
@@ -160,5 +163,5 @@ You can leave each file open in the editor as you go, or close them. leave oledt
 
 ## Run the Test Program
 
-With the **oledtest.py** file open and editor tab selected, click the green `Run current scrip`t icon. F5 works too.
+With the **hello.py** file open and editor tab selected, click the green `Run current scrip`t icon. F5 works too.
 
