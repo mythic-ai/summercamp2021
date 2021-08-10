@@ -32,7 +32,25 @@ Find Thonny's `Th` icon on your desktop and double click it.
 
 ### Mac users
 
-We'll assume it goes similarly to the Windows setup, but you click the <u>**Mac**</u> link.
+At The top of the Thonny webpage,  click <u>**Mac**</u> link.
+
+Click `Allow` at the Do you want to allow Downloads on "thonny .org" dialog.
+
+When the download completes click the icon that looks like an open box and then double click the **thonny-3.3.13.pkg** file.
+
+At the Welcome to the Thonny Installer dialog, click the `Continue` button.
+
+At the Software License Agreement page, click Continue, then click Agree on the next dialog.
+
+Click Install on the Standard Install on "Macintosh HD" dialog.
+
+You'll be prompted to type the user password, type it and the click the Install Software button.
+
+When installation completes press the Close button
+
+At the Do you want to move the "Thonny" installer to the Trash? dialog, click Move to Trash.
+
+Click the Launchpad (Rocket Icon), find Thonny's `Th` icon and click it.
 
 ### Raspberry Pi users
 
