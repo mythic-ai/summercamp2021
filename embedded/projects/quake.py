@@ -1,17 +1,17 @@
-# Print sensor values to the display
+# Earthquake alert
+#
+# (note from author - this is an example to learn about embedded systems. You shouldn't rely on it
+#  to detect an actual earthquake.)
 # - Mythic Summer Camp 2021
 #
 # Connections:
 # - Pin 4  - I2C SDA  -> OLED (onboard module), laser distance sensor, and IMU
 # - Pin 15 - I2C SCL  -> OLED (onboard module), laser distance sensor, and IMU
-# - Pin 19 - GPIO in  -> Hall effect (magnet) sensor, inverted
 # - Pin 22 - GPIO out -> Beeper, inverted
 # - Pin 25 - GPIO out -> White LED (onboard module)
-# - Pin 27 - Touch in -> Touch sense wire
 
 from machine import I2C, Pin, TouchPad
 import ssd1306
-import vl53l0x
 import imu
 import time
 
@@ -19,12 +19,13 @@ rst = Pin(16, Pin.OUT)
 rst.value(1)
 led = Pin(25, Pin.OUT)
 led.value(0)
+beeper = Pin(22, Pin.OUT)
+beeper.value(1) # beeper makes noise if low (0) and quiet if high (1)
+
 scl = Pin(15, Pin.OUT, Pin.PULL_UP)
 sda = Pin(4, Pin.OUT, Pin.PULL_UP)
 i2c = I2C(scl=scl, sda=sda, freq=450000)
 oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3c)
-laser = vl53l0x.VL53L0X(i2c)
-tp = TouchPad(Pin(27, Pin.IN, None))
 imu = imu.MPU6050(i2c)
 
 def mythic_logo(oled):
@@ -40,28 +41,47 @@ def mythic_logo(oled):
 
 # *** Interesting code starts here! ***
 
+# Set up 128 samples, one per horizontal pixel in the OLED
+plot = [1.0] * 128
+
 # Do this forever
 while True:
-    # Start the laser measuring and wait a bit for it to be ready
-    laser.start()
-    time.sleep(0.05)
-    
+
     # Blank the screen
     oled.fill(0)
     
     # Write some stuff at the top
-    oled.text('Mythic', 45, 5)
-    oled.text('MicroPython', 20, 20)
+    oled.text('Mythic', 45, 0)
     
     # Print the sensor readings
-    oled.text('Laser = ' + str(laser.read()) + 'mm', 10, 30)
-    oled.text('Touch = ' + str(tp.read()), 10, 40)
-    oled.text('Tilt = ' + str(imu.accel.inclination) + 'deg', 10, 50)
+    #oled.text('Accel = ' + str(imu.accel.magnitude) + ' G', 10, 10)
+    oled.text('Accel = {:.4f} G'.format(imu.accel.magnitude) + ' G', 0, 10)
     mythic_logo(oled)
+    
+    # Remove oldest element from the plot
+    plot.pop(0)
+    
+    plot.append(imu.accel.magnitude)
+    
+    found_a_quake = False
+    # Plot the line
+    for x in range(0, 128):
+        y = 48 - int((plot[x] - 1.0) * 12.0) 
+        oled.pixel(x, y, 1)
+        # Look at each point, and check if we have a high enough peak to be a quake
+        if plot[x] > 2.3:
+            found_a_quake = True
+    
+    if found_a_quake:
+        # If we found a quake in the sample set, beep and light up LED
+        led.value(1)
+        beeper.value(0)
+    else:
+        # And if not, turn them both off
+        led.value(0)
+        beeper.value(1)
     
     # Commit the screen changes
     oled.show()
-    
-    # Stop the laser measurements and give the sensor a break
-    laser.stop()
-    time.sleep(0.05)
+
+    time.sleep(0.01)

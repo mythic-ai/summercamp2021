@@ -1,31 +1,28 @@
-# Print sensor values to the display
+# Touch sensor example
 # - Mythic Summer Camp 2021
 #
 # Connections:
 # - Pin 4  - I2C SDA  -> OLED (onboard module), laser distance sensor, and IMU
 # - Pin 15 - I2C SCL  -> OLED (onboard module), laser distance sensor, and IMU
-# - Pin 19 - GPIO in  -> Hall effect (magnet) sensor, inverted
 # - Pin 22 - GPIO out -> Beeper, inverted
 # - Pin 25 - GPIO out -> White LED (onboard module)
 # - Pin 27 - Touch in -> Touch sense wire
 
 from machine import I2C, Pin, TouchPad
 import ssd1306
-import vl53l0x
-import imu
 import time
 
 rst = Pin(16, Pin.OUT)
 rst.value(1)
 led = Pin(25, Pin.OUT)
 led.value(0)
+beeper = Pin(22, Pin.OUT)
+beeper.value(1) # beeper makes noise if low (0) and quiet if high (1)
 scl = Pin(15, Pin.OUT, Pin.PULL_UP)
 sda = Pin(4, Pin.OUT, Pin.PULL_UP)
 i2c = I2C(scl=scl, sda=sda, freq=450000)
 oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3c)
-laser = vl53l0x.VL53L0X(i2c)
 tp = TouchPad(Pin(27, Pin.IN, None))
-imu = imu.MPU6050(i2c)
 
 def mythic_logo(oled):
     logo=[
@@ -42,10 +39,6 @@ def mythic_logo(oled):
 
 # Do this forever
 while True:
-    # Start the laser measuring and wait a bit for it to be ready
-    laser.start()
-    time.sleep(0.05)
-    
     # Blank the screen
     oled.fill(0)
     
@@ -54,14 +47,22 @@ while True:
     oled.text('MicroPython', 20, 20)
     
     # Print the sensor readings
-    oled.text('Laser = ' + str(laser.read()) + 'mm', 10, 30)
     oled.text('Touch = ' + str(tp.read()), 10, 40)
-    oled.text('Tilt = ' + str(imu.accel.inclination) + 'deg', 10, 50)
     mythic_logo(oled)
     
     # Commit the screen changes
     oled.show()
     
-    # Stop the laser measurements and give the sensor a break
-    laser.stop()
-    time.sleep(0.05)
+    # Check if the touch pin sensor is less than 200
+    # (the lower the number, the more likely something is touching the wire)
+    if tp.read() < 200:
+        # If it's being touched, turn on the white LED and beep the buzzer
+        led.value(1)
+        beeper.value(0)
+    else:
+        # If it's not being touched, turn the LED and buzzer off
+        led.value(0)
+        beeper.value(1)
+    
+    # Wait for a bit...
+    time.sleep(0.1)
