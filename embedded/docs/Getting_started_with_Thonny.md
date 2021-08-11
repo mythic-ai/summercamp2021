@@ -63,21 +63,21 @@ On the first use of Thonny, it will prompt you for two pieces of information for
 1. Pick what you'd like to use for the language of the user interface.
 2. Pick **Standard** for the **Initial settings** (Raspberry Pi settings are for coding for Raspberry Pi?).
 
-### Tell Thonny you'll be writing code for MicroPython
+### Tell Thonny you'll be writing code for MicroPython on the ESP32
 
 Click `Tools` on the menu bar and then `Options...` from the drop-down menu.
 
 Click the `Interpreter` tab
 
-Select MicroPython (ESP32) from the **Which interpreter or device should Thonny use for running your code?** selector (click the down arrow at the end).
+Select `MicroPython (ESP32)` from the **Which interpreter or device should Thonny use for running your code?** selector (click the down arrow at the end).
 
-Leave the Port or WebREPL selector at < Try to detect port automatically >.
+Leave the Port or WebREPL selector at `< Try to detect port automatically >`.
 
 Click `OK`, but we'll be back here in a bit to install the firmware.
 
 ## Get the MicroPython firmware file for the ESP32 microprocessor on the module
-(skip for boards given out at the Mythic Summer Camp - this is already loaded)
-  
+*(skip for boards given out at the Mythic Summer Camp - this is already loaded)*
+
 Use your browser to navigate to: 
 https://micropython.org/download/esp32/
 
@@ -86,8 +86,8 @@ As of 7/22/21, the latest was:
 https://micropython.org/resources/firmware/esp32-20210623-v1.16.bin
 
 ## Flash the MicroPython firmware to the board
-(skip for boards given out at the Mythic Summer Camp - this is already loaded)
-  
+*(skip for boards given out at the Mythic Summer Camp - this is already loaded)*
+
 > **Note:**  You'll only need to do this once on your microcontroller board. Well, unless something goes really wrong and you need to start over from scratch.
 
 Connect a USB cable from your computer to the microcontroller board. The board should power up.
@@ -137,13 +137,13 @@ Go to https://github.com/mythic-ai/summercamp2021/archive/refs/heads/main.zip . 
 
 If you're a Windows user, right click on the zip file and click `Extract All...`. 
 
-It's fine to extract into your computer's Downloads directory, but you might want to choose another location. For this example we'll just put them all in **C:\Users\\**YourUserName>**\Downloads\summercamp2021-main** . 
+It's fine to extract into your computer's Downloads directory, but you might want to choose another location. For this example we'll just put them all in C:\Users\\<YourUserName>\Downloads\summercamp2021-main . 
 
 Click the `Extract` button and the directory shown above will be created with all the files you need in it.
 
 ### Copy the files from your computer to the module
 (skip for boards given out at the Mythic Summer Camp - this is already loaded)
-  
+
 We need to copy these files from the summer camp directory to the module, we'll use Thonny to do that.
 
 ```
@@ -161,13 +161,13 @@ In Thonny, click the Open... file icon (it looks like a folder). Ctrl-O works to
 
 Click the `This computer` button
 
-Navigate to the source file directory e.g. *C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\*
+Navigate to the source file directory e.g. C:\Users\<YourUsername>\Downloads\summercamp2021-main\summercamp2021-main\embedded\modules\
 
 Select the file.
 
 Click the `Open` button.
 
-When the file is open and it's tab is selected, use the `File` menu and select `Save as...`. Ctrl-Shift-S works too.
+When the file is open and it's tab is selected, use the `File` menu and select `Save as...`. `Ctrl-Shift-S` works too.
 
 Click the `MicroPython device` button.
 
@@ -181,5 +181,4 @@ You can leave each file open in the editor as you go, or close them. leave oledt
 
 ## Run the Test Program
 
-With the **hello.py** file open and editor tab selected, click the green `Run current scrip`t icon. F5 works too.
-
+With the **hello.py** file open and editor tab selected, click the green `Run current script` icon. `F5` works too.
