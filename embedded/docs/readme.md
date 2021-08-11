@@ -9,7 +9,7 @@
 * 1x [Hall Effect Magnetic Sensor Module](https://www.amazon.com/gp/product/B07X97JXHT)
 * 1x [Multicolored Wire Kit](https://www.amazon.com/gp/product/B01EV70C78)
 * 1x [Solderless Breadboard](https://www.amazon.com/gp/product/B07NVWR495)
-* 1x [Ceramid Magnets](https://www.amazon.com/gp/product/B07S75MD7X) (any magnet will do)
+* 1x [Ceramic Magnets](https://www.amazon.com/gp/product/B07S75MD7X) (any magnet will do)
 * 1x [Roll Copper Foil Tape](https://www.amazon.com/gp/product/B0741ZRP4W)
 
 ## Your first project
